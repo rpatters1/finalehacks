@@ -7,13 +7,38 @@ Please file bugs with the correct tag.  For problems where the plug-in fails to 
 file under Plug-in Bug.  For new bugs in Finale that you'd like someone to try to work around, file under
 Finale Bug.
 
+## Installing
+
+To install the workaround:
+
+- Adjust makefile for the correct plug-ins directory if needed.  (The default is correct for Finale 27.)
+- make
+- make install
+
+Although this will probably work in some earlier versions, it has been tested only in Finale 27.
+
+You can see that the hack is loaded correctly by running
+
+    /Applications/Finale.app/Contents/MacOS/Finale 
+
+on the command line and looking for log messages similar to the following:
+
+    2024-12-12 01:15:50.224 Finale[28736:1819422] Hacking Finale to work around bugs.
+    2024-12-12 01:15:50.224 Finale[28736:1819422] Done hacking Finale to work around bugs.
+
+Hope this helps!
+
+
 ---
 
 ## Version History
 
 ### 1.0
 
-Fixes a bug that can cause crashes when deleting notes using Simple Edit (and possibly at other times).  Crash signature:
+Fixes a bug that can cause crashes when deleting the only note in an otherwise empty measure that is
+several measures after the next non-empty measure using the Simple Edit tool.
+
+Crash signature:
 
 ```
 0   libsystem_kernel.dylib        	       0x1885aaa60 __pthread_kill + 8
@@ -36,3 +61,10 @@ Fixes a bug that can cause crashes when deleting notes using Simple Edit (and po
 38  Finale                        	       0x1024a8ea0 -[MusView display] + 96
 ...
 ```
+
+A similar crash signature has been reported at least as far back as Finale 25.  It is not known what specific
+conditions make this bug reproducible, beyond that it is very hard to reproduce it in new documents (but not
+impossible), and very easy to reproduce it in certain specific documents (requiring just two clicks followed by
+the delete key).  Basically, if you're not seeing it, you probably won't, and if you are, you're probably
+swearing.
+

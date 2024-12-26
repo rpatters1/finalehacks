@@ -1,0 +1,80 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Xcode-specific files
+*.xcworkspace
+*.xcuserdata/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/**/*
+.idea/
+
+# Ignore build products
+build/
+DerivedData/
+*.app
+*.dSYM
+*.ipa
+*.xcarchive
+*.o
+*.a
+*.dylib
+*.framework
+
+# Ignore intermediate build files and cache
+*.obj
+*.pdb
+*.ilk
+*.pch
+*.tmp
+*.log
+*.swp
+*.lock
+*.moved-aside
+*.old
+*.bak
+*.cache
+*.pyc
+*.class
+
+# Ignore Makefile build outputs
+*.d
+*.out
+*.so
+*.elf
+*.map
+*.lst
+*.hex
+*.bin
+*.tar.gz
+
+# Ignore version control for pods
+Pods/
+Carthage/
+
+# Ignore C/C++ artifacts
+*.gch
+*.gcda
+*.gcno
+*.gcov
+*.lo
+*.la
+
+# Ignore archives and generated files
+*.zip
+*.tar
+*.7z
+
+# Ignore node_modules in case of embedded React Native or similar
+node_modules/
+
+# Ignore configuration files
+*.plist
+*.xcconfig
+
+# Ignore IDE files
+*.iml
+.idea/
+
+# Finale Hacks directory
+Finale Hacks/

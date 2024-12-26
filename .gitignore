@@ -75,6 +75,7 @@ node_modules/
 # Ignore IDE files
 *.iml
 .idea/
+.vscode/
 
 # Finale Hacks directory
 Finale Hacks/

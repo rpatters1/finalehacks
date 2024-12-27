@@ -1,11 +1,18 @@
 # Finale Hacks
 
-Finale Hacks is a custom plug-in for MakeMusic Finale 27 (and possibly earlier versions, but no guarantees) that
-patches their code to work around known bugs.
+Finale Hacks is a custom plug-in for MakeMusic Finale 27 running on macOS that patches their code to work around known bugs and issues. It should also work in Finale 25 and Finale 26, but these are not supported.
 
 Please file bugs with the correct tag.  For problems where the plug-in fails to fix a bug that it claims to fix,
 file under Plug-in Bug.  For new bugs in Finale that you'd like someone to try to work around, file under
 Finale Bug.
+
+## Dependencies
+
+To build this project, you need the XCode Command Line Tools. These can be obtained by opening a Terminal window and typing:
+
+```bash
+xcode-select --install
+```
 
 ## Installing
 
@@ -15,7 +22,7 @@ To install the workaround:
 - make
 - make install
 
-Although this will probably work in some earlier versions, it has been tested only in Finale 27.
+Although this will probably work in some earlier versions (back to Finale 25), it has been tested only in Finale 27.
 
 You can see that the hack is loaded correctly by running
 
@@ -28,6 +35,56 @@ on the command line and looking for log messages similar to the following:
 
 Hope this helps!
 
+## Debugging With Visual Studio Code
+
+1. Install the following extensions:
+   - C/C++ (from Microsoft)
+   - C/C++ Extension Pack (from Microsoft)
+   - C/C++ Themes (from Microsoft)
+   - codeLLDB (from Vadim Chugunov)
+2. Add the following `.vscode/launch.json` file:
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Finale Hacks in Finale",
+            "type": "lldb",
+            "request": "launch",
+            "program": "/Applications/Finale.app/Contents/MacOS/Finale",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "DYLD_INSERT_LIBRARIES": "${workspaceFolder}/Finale Hacks/Debug/Finale Hacks.bundle/Contents/MacOS/Finale Hacks"
+            },
+            "preLaunchTask": "build-debug"
+        }
+    ]
+}
+```
+
+3. Add the following `.vscode/tasks.json` file:
+
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-debug",
+            "type": "shell",
+            "command": "make",
+            "args": ["debug"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
+```
+
+Now you should be able to launch Finale and debug the project from the project home directory.
 
 ---
 

@@ -90,6 +90,8 @@ NOTE: It is recommended to remove the release version of the plugin from Finale'
 
 ```json
 {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
     "files.associations": {
         "*.h": "objective-c",
         "*.m": "objective-c",
@@ -138,4 +140,9 @@ conditions make this bug reproducible, beyond that it is very hard to reproduce 
 impossible), and very easy to reproduce it in certain specific documents (requiring just two clicks followed by
 the delete key).  Basically, if you're not seeing it, you probably won't, and if you are, you're probably
 swearing.
+
+### 1.1
+
+Addresses a longstanding problem with modeless plugin windows grabbing focus from the document window after a modal dialog popup. If you make much use of modeless plugin dialogs, you will have been swearing at them for a long, long time.
+
 

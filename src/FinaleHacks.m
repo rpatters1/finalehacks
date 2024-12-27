@@ -15,6 +15,7 @@
   IMP originalImplementation = method_getImplementation(displayMethod);
   IMP newImplementation = imp_implementationWithBlock(^(id blockSelf) {
     if (objc_getAssociatedObject(blockSelf, @selector(display))) {
+      NSLog(@"Finale Hacks disabled recursive call to MusView display selector.");
       return;
     }
 

@@ -37,6 +37,8 @@ Hope this helps!
 
 ## Debugging With Visual Studio Code
 
+NOTE: It is recommended to remove the release version of the plugin from Finale's plugin directory while debugging.
+
 1. Install the following extensions:
    - C/C++ (from Microsoft)
    - C/C++ Extension Pack (from Microsoft)
@@ -84,7 +86,7 @@ Hope this helps!
 }
 ```
 
-Now you should be able to launch Finale and debug the project from the project home directory.
+Now you should be able to debug `Finale Hacks` from the top-level `Finale Hacks` directory. VS Code automatically launches Finale and stops at your breakpoints as you reach them.
 
 ---
 

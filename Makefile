@@ -6,7 +6,7 @@ DEBUG_DIR = ${BUILD_DIR}/Debug
 BUNDLE_DIR = Finale\ Hacks.bundle/Contents
 
 CXX = c++  # Use the C++ compiler
-CXXFLAGS = -std=c++17 -dynamiclib -framework Foundation -x objective-c++
+CXXFLAGS = -std=c++17 -mmacosx-version-min=10.10 -dynamiclib -framework Foundation -x objective-c++
 ARCH_FLAGS = -arch x86_64 -arch arm64
 
 all:

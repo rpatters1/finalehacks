@@ -1,6 +1,6 @@
 #import <objc/runtime.h>
 #import "FinaleHackManager.h"
-#import "MusViewHack.h"
+#import "FinaleHackList.h"
 
 void registerMusViewHack() {
     [FinaleHackManager registerHackWithName:@"MusViewHack" block:^{

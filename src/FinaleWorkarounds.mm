@@ -1,5 +1,5 @@
 #import "FinaleHackManager.h"
-#import "MusViewHack.h"
+#import "FinaleHackList.h"
 
 @interface FinaleWorkarounds : NSObject
 @end
@@ -11,6 +11,7 @@
 
     /// @todo possible suppress hack registration based on a config file
     registerMusViewHack();
+    registerModelessDialogHack();
 
     [FinaleHackManager applyAllHacks];
 

@@ -50,6 +50,7 @@ void registerModelessDialogHack() {
           DEBUG_CODE(NSLog(@"Hacked FX_Dialog window %@", [win title]));
           objc_setAssociatedObject(win, kIsPluginWindowKey, @YES, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         } else if ([NSStringFromClass([win.delegate class]) hasPrefix:@"_NSWindowDelegate_jw"]) {    // JW Tools plugin windows
+          // we use the associated value, because JW Tools plugins in particular lose their delegates for some reason
           DEBUG_CODE(NSLog(@"Hacked JW Tools window %@", [win title]));
           objc_setAssociatedObject(win, kIsPluginWindowKey, @YES, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         } else if ([win.title isEqualTo:utils::getLocalizedString(@"IDSTR_SPACE_SYSTEMS_WINDOW_TITLE")]) { // Space Systems (originally from JW)
@@ -57,7 +58,6 @@ void registerModelessDialogHack() {
           objc_setAssociatedObject(win, kIsPluginWindowKey, @YES, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         if (objc_getAssociatedObject(win, kIsPluginWindowKey) && !win.hidesOnDeactivate) {
-          // we use the associated value, because JW Tools plugins in particular lose their delegates for some reason
           DEBUG_CODE(NSLog(@"Setting window %@ hidesOnDeactivate = YES", [win title]));
           win.hidesOnDeactivate = true;
         }

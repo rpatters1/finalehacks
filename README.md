@@ -86,6 +86,18 @@ NOTE: It is recommended to remove the release version of the plugin from Finale'
 }
 ```
 
+4. You will probably also want to associate header files with Objective-C by adding a `.vscode/settings.json` file:
+
+```json
+{
+    "files.associations": {
+        "*.h": "objective-c",
+        "*.m": "objective-c",
+        "*.mm": "objective-cpp"
+    }
+}
+```
+
 Now you should be able to debug `Finale Hacks` from the top-level `Finale Hacks` directory. VS Code automatically launches Finale and stops at your breakpoints as you reach them.
 
 ---

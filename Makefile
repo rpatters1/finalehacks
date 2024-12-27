@@ -6,12 +6,15 @@ DEBUG_DIR = ${BUILD_DIR}/Debug
 BUNDLE_DIR = Finale\ Hacks.bundle/Contents
 
 CXX = c++  # Use the C++ compiler
-CXXFLAGS = -std=c++17 -mmacosx-version-min=10.10 -dynamiclib -framework Foundation -x objective-c++
+CXXFLAGS = -std=c++17 -Wall -mmacosx-version-min=10.10 -dynamiclib -framework Foundation -I./src
 ARCH_FLAGS = -arch x86_64 -arch arm64
+SRC_FILES = src/FinaleHackManager.mm \
+			src/FinaleWorkarounds.mm \
+			src/MusViewHack.mm
 
 all:
 	mkdir -p ${RELEASE_DIR}/${BUNDLE_DIR}/MacOS
-	${CXX} ${CXXFLAGS} ${ARCH_FLAGS} -o ${RELEASE_DIR}/${BUNDLE_DIR}/MacOS/'Finale Hacks' src/FinaleHacks.m
+	${CXX} ${CXXFLAGS} ${ARCH_FLAGS} -o ${RELEASE_DIR}/${BUNDLE_DIR}/MacOS/'Finale Hacks' ${SRC_FILES}
 	cp Info.plist ${RELEASE_DIR}/${BUNDLE_DIR}
 
 install: all
@@ -20,7 +23,7 @@ install: all
 
 debug:
 	mkdir -p ${DEBUG_DIR}/${BUNDLE_DIR}/MacOS
-	${CXX} ${CXXFLAGS} -g -O0 ${ARCH_FLAGS} -o ${DEBUG_DIR}/${BUNDLE_DIR}/MacOS/'Finale Hacks' src/FinaleHacks.m
+	${CXX} ${CXXFLAGS} -g -O0 ${ARCH_FLAGS} -o ${DEBUG_DIR}/${BUNDLE_DIR}/MacOS/'Finale Hacks' ${SRC_FILES}
 	cp Info.plist ${DEBUG_DIR}/${BUNDLE_DIR}
 
 clean:

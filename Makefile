@@ -1,5 +1,4 @@
 INSTALL_DIR = /Library/Application\ Support/MakeMusic/Finale\ 27/Plug-ins
-DEBUG_DIR = /Library/Application\ Support/MakeMusic/Finale\ 27/Plug-ins
 
 BUILD_DIR = Finale\ Hacks
 RELEASE_BUILD_DIR = ${BUILD_DIR}/Release
@@ -18,8 +17,6 @@ debug:
 	mkdir -p ${DEBUG_BUILD_DIR}/'Finale Hacks.bundle/Contents/MacOS'
 	cc -dynamiclib -g -O0 -arch x86_64 -arch arm64 -o ${DEBUG_BUILD_DIR}/'Finale Hacks.bundle/Contents/MacOS/Finale Hacks' src/FinaleHacks.m -framework Foundation
 	cp Info.plist ${DEBUG_BUILD_DIR}/'Finale Hacks.bundle/Contents'
-	mkdir -p ${DEBUG_DIR}/Debug
-	cp -r ${DEBUG_BUILD_DIR}/'Finale Hacks.bundle' ${DEBUG_DIR}/Debug
 
 clean:
 	rm -rf 'Finale Hacks'

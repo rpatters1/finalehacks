@@ -17,10 +17,14 @@ DEBUG_FLAGS = -g -O0 -D_DEBUG
 RELEASE_FLAGS = -O2
 
 all:
+	make release
+
+release: src/*.mm src/*.h
 	rm -rf ${RELEASE_DIR}/Finale\ Hacks.bundle
 	mkdir -p ${RELEASE_DIR}/${BUNDLE_DIR}/MacOS
 	${CXX} ${CXXFLAGS} ${RELEASE_FLAGS} ${ARCH_FLAGS} -o ${RELEASE_DIR}/${BUNDLE_DIR}/MacOS/'Finale Hacks' ${SRC_FILES}
 	cp -r bundle_items/* ${RELEASE_DIR}/${BUNDLE_DIR}
+	touch release
 
 install: all
 	rm -rf ${INSTALL_DIR}/Finale\ Hacks
@@ -34,3 +38,4 @@ debug:
 
 clean:
 	rm -rf ${BUILD_DIR}
+	rm release

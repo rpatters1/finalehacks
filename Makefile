@@ -24,7 +24,7 @@ release: src/*.mm src/*.h
 	mkdir -p ${RELEASE_DIR}/${BUNDLE_DIR}/MacOS
 	${CXX} ${CXXFLAGS} ${RELEASE_FLAGS} ${ARCH_FLAGS} -o ${RELEASE_DIR}/${BUNDLE_DIR}/MacOS/'Finale Hacks' ${SRC_FILES}
 	cp -r bundle_items/* ${RELEASE_DIR}/${BUNDLE_DIR}
-	touch release
+	touch ${RELEASE_DIR}
 
 install: all
 	rm -rf ${INSTALL_DIR}/Finale\ Hacks
@@ -38,4 +38,4 @@ debug:
 
 clean:
 	rm -rf ${BUILD_DIR}
-	rm release
+	rm ${RELEASE_DIR}
